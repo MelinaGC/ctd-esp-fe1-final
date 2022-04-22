@@ -6,6 +6,7 @@ import { useSelector } from "../store/store";
 import { useEffect, useState } from "react";
 import { fetchEpisodesThunk } from "../actions/episodeActions";
 import GrillaEpisodios from "../componentes/episodios/grilla-episodios.componente";
+import Character from "../types/character.types";
 
 /**
  * Component that render the detail page of a character with its details and episodes it appears on.
@@ -14,8 +15,8 @@ import GrillaEpisodios from "../componentes/episodios/grilla-episodios.component
  */
 
 const PaginaDetalle = () => {
-  const [characterIdDetail, setCharacterIdDetail] = useState(0);
-  const { characters } = useSelector((state) => state.characters);
+  const [characterDetail, setCharacterDetail] = useState<Character>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { status } = useSelector((state) => state.episodes);
   const dispatch = useDispatch();
   const arrayEpisodesId: number[] = [];
@@ -24,13 +25,14 @@ const PaginaDetalle = () => {
 
   useEffect(() => {
     if (characterId) {
-      setCharacterIdDetail(parseInt(characterId));
+      fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setCharacterDetail(data);
+          setIsLoading(false);
+        });
     }
-  }, [characterId, dispatch]);
-
-  const characterDetail = characters.find(
-    (character) => character.id === characterIdDetail
-  );
+  }, [characterId]);
 
   if (characterDetail) {
     characterDetail.episode.map((episode) => {
@@ -45,6 +47,14 @@ const PaginaDetalle = () => {
       dispatch(fetchEpisodesThunk(arrayEpisodesId));
     }
   }, [characterDetail]);
+
+  if (isLoading) {
+    return (
+      <div className="container">
+        <h2>Cargando personaje...</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="container">

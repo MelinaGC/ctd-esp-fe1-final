@@ -16,6 +16,7 @@ export type IRootState = ReturnType<typeof rootReducer>;
 
 // Tipamos el hook useSelector
 export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector
+// sacar esto de los componentes, importarlo diractamente de acá!
 
 export const store = createStore(
     rootReducer, composeWithDevTools(applyMiddleware(thunk)) // Aqui aplicaremos los middlewares

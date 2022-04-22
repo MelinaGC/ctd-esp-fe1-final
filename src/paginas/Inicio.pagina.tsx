@@ -3,12 +3,8 @@ import Filtros from "../componentes/personajes/filtros.componente";
 import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente";
 import Paginacion from "../componentes/paginacion/paginacion.componente";
 import { fetchCharactersThunk } from "../actions/personajesActions";
-import {
-  TypedUseSelectorHook,
-  useDispatch,
-  useSelector as useReduxSelector,
-} from "react-redux";
-import { IRootState } from "../store/store";
+import { useDispatch } from "react-redux";
+import { useSelector } from "../store/store";
 
 /**
  * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
@@ -18,8 +14,6 @@ import { IRootState } from "../store/store";
  *
  * @returns la pagina de inicio
  */
-
- export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector;
 
 const PaginaInicio: FC = () => {
   const dispatch = useDispatch();

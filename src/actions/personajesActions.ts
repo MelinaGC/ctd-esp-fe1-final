@@ -64,7 +64,7 @@ export const addCharacterAsFavorite: ActionCreator<AddCharacterAsFavoriteAction>
 ) => {
   return {
     type: "ADD_FAVORITE_CHARACTER",
-    character: favorite,
+/*     character: favorite, */
     favorite: favorite
   }
 }
@@ -73,7 +73,7 @@ export const removeCharacterFromFavorite: ActionCreator<RemoveCharacterFromFavor
 (favorite: Character) => {
   return {
     type: "REMOVE_FAVORITE_CHARACTER",
-    character: favorite,
+/*     character: favorite, */
     favorite: favorite
   }
 }

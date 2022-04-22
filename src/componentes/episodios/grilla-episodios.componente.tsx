@@ -1,10 +1,6 @@
 import React, { FC } from "react";
 import TarjetaEpisodio from "./tarjeta-episodio.componente";
-import {
-  TypedUseSelectorHook,
-  useSelector as useReduxSelector,
-} from "react-redux";
-import { IRootState } from "../../store/store";
+import { useSelector } from "../../store/store";
 import Episode from "../../types/episode.types";
 
 /**
@@ -16,17 +12,13 @@ import Episode from "../../types/episode.types";
  * @returns un JSX element
  */
 
-export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector;
-
-const GrillaEpisodios: FC<{ status: string }> = ({
-  status,
-}) => {
+const GrillaEpisodios: FC<{ status: string }> = ({ status }) => {
   const { episodes } = useSelector((state) => state.episodes);
 
   if (status === "LOADING") return <div>Cargando episodios...</div>;
   if (status === "FAILED") return <div>No se pudo cargar los episodios.</div>;
-  if (!episodes || episodes.length === 0) return <>No se encontraron episodios.</>;
-
+  if (!episodes || episodes.length === 0)
+    return <>No se encontraron episodios.</>;
 
   return (
     <div className={"episodios-grilla"}>

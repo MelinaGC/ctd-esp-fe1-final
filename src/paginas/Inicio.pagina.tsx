@@ -7,12 +7,9 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "../store/store";
 
 /**
- * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
+ * Main page, contains the filter panel and grid of characters.
  *
- * Uso:
- * ``` <PaginaInicio /> ```
- *
- * @returns la pagina de inicio
+ * @returns main page.
  */
 
 const PaginaInicio: FC = () => {
@@ -20,11 +17,21 @@ const PaginaInicio: FC = () => {
   const [page, setPage] = useState(1);
   const { characters, status, search } = useSelector((state) => state.characters);
 
+  /**
+   * Function that when the button to delete the filter value on the input to search for a character name
+   * dispatches the action to delete the filter and get all the characters available and resets the page
+   * of the web to the first.
+   */
   const handleDeleteFilters = async () => {
     setPage(1);
     dispatch(fetchCharactersThunk(""));
   };
 
+  /**
+   * Function that is passed to the filter component and recibes the value of the input from the user to
+   * search characters by their name and dispatches the action to fetch those characters.
+   * @param {Event} e
+   */
   const handleCharacterSearch = async (filterValue: string) => {
     dispatch(fetchCharactersThunk(filterValue));
   };

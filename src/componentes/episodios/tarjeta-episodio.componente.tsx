@@ -3,12 +3,9 @@ import Episode from "../../types/episode.types";
 import "./tarjeta-episodio.css";
 
 /**
- * Tarjeta para cada episodio dentro de la vista de personaje.
- *
- * Deberás agregar las propiedades necesarias para mostrar los datos de los episodios
- *
- *
- * @returns un JSX element
+ * Card for each episode in the character detail view.
+ * @param {Episode} episode
+ * @returns {JSX.Element}
  */
 
 const TarjetaEpisodio: FC<{ episode: Episode }> = ({ episode }) => {

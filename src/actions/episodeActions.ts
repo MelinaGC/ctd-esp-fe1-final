@@ -45,7 +45,6 @@ const fetchEpisodesFailure: ActionCreator<FetchEpisodesFailedAction> = (
   };
 };
 
-
 export type EpisodeActions =
   | ReturnType<typeof fetchEpisodesPending>
   | ReturnType<typeof fetchEpisodesSuccess>

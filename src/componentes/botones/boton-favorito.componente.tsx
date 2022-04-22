@@ -7,13 +7,11 @@ import {
 import Character from "../../types/character.types";
 import { useDispatch } from "react-redux";
 import { useSelector } from "../../store/store";
+
 /**
- * Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
- *
- * Deberás tipar las propiedades si usas este componente
- *
- *
- * @returns un JSX element
+ * Button that indicates is an element is favorite or not, y allows the user to set it as favorite or remove it
+ * @param {Character} character 
+ * @returns {JSX.Element}
  */
 
 const BotonFavorito: FC<{ character: Character }> = ({ character }) => {
@@ -24,6 +22,11 @@ const BotonFavorito: FC<{ character: Character }> = ({ character }) => {
     ? true
     : false;
 
+  /**
+   * Function that when the button to set or unset a character as favorites is clicked checks whether if
+   * the character was already set as favorite or not and dispatches the action to add the character
+   * as favorite or remove it.
+   */
   const handleCharactersFavorites = () => {
     if (!isFavorite) {
       dispatch(addCharacterAsFavorite(character));
@@ -35,8 +38,8 @@ const BotonFavorito: FC<{ character: Character }> = ({ character }) => {
   const src = isFavorite ? "/imagenes/star-filled.png" : "/imagenes/star.png";
 
   return (
-    <div className="boton-favorito">
-      <img src={src} alt={"favorito"} onClick={handleCharactersFavorites} />
+    <div className="boton-favorito" onClick={handleCharactersFavorites}>
+      <img src={src} alt={"favorito"} />
     </div>
   );
 };

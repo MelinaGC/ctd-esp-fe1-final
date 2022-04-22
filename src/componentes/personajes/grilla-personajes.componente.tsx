@@ -1,19 +1,20 @@
-import React, { FC} from "react";
+import React, { FC } from "react";
 import "./grilla-personajes.css";
 import TarjetaPersonaje from "./tarjeta-personaje.componente";
 import Character from "../../types/character.types";
 
 /**
- * Grilla de personajes para la pagina de inicio
- *
- * Deberás agregar las funciones necesarias para mostrar y paginar los personajes
- *
- *
- * @returns un JSX element
+ * Component that render the grid of characters on the home page.
+ * @param {Character[]} characters
+ * @param {string} status - to know if the characters where fetched succesfully or not in order to render
+ *                          the characters or a message according to the status of the request.
+ * @returns {JSX.Element}
  */
 
-const GrillaPersonajes: FC<{characters: Character[], status: string}> = ({characters, status}) => {
-
+const GrillaPersonajes: FC<{ characters: Character[]; status: string }> = ({
+  characters,
+  status,
+}) => {
   if (status === "LOADING") return <div>Cargando personajes...</div>;
   if (status === "FAILED") return <div>No se pudo cargar los personajes.</div>;
   if (!characters || characters.length === 0)

@@ -1,6 +1,6 @@
 import Character from "../types/character.types";
 
-export const buscarPersonajesAPI = async (
+export const getCharactersAPI = async (
     nombre?: string,
     page?: number
 ): Promise<Character[]> => {

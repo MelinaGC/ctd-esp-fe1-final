@@ -4,12 +4,10 @@ import { useSelector } from "../../store/store";
 import Episode from "../../types/episode.types";
 
 /**
- * Grilla de personajes para la pagina de inicio
- *
- * Deberás agregar las funciones necesarias para mostrar y paginar los personajes
- *
- *
- * @returns un JSX element
+ * Component that render the grid of episodes on the character detail.
+ * @param {string} status - to know if the episodes where fetched succesfully or not in order to render
+ *                          the episodes or a message according to the status of the request. 
+ * @returns {JSX.Element}
  */
 
 const GrillaEpisodios: FC<{ status: string }> = ({ status }) => {

@@ -1,5 +1,5 @@
 import { Action, ActionCreator, ThunkAction } from "@reduxjs/toolkit";
-import { buscarPersonajesAPI } from "../services/personajesrm.services";
+import { getCharactersAPI } from "../services/personajesrm.services";
 import { IRootState } from "../store/store";
 import Character from "../types/character.types";
 
@@ -64,7 +64,6 @@ export const addCharacterAsFavorite: ActionCreator<AddCharacterAsFavoriteAction>
 ) => {
   return {
     type: "ADD_FAVORITE_CHARACTER",
-/*     character: favorite, */
     favorite: favorite
   }
 }
@@ -73,7 +72,6 @@ export const removeCharacterFromFavorite: ActionCreator<RemoveCharacterFromFavor
 (favorite: Character) => {
   return {
     type: "REMOVE_FAVORITE_CHARACTER",
-/*     character: favorite, */
     favorite: favorite
   }
 }
@@ -102,7 +100,7 @@ export const fetchCharactersThunk = (
   return async (dispatch) => {
     dispatch(fetchCharactersPending(query));
     try {
-      const characters: Character[] = await buscarPersonajesAPI(query, page);
+      const characters: Character[] = await getCharactersAPI(query, page);
       dispatch(fetchCharactersSuccess(characters));
     } catch (e) {
       dispatch(fetchCharactersFailure(e));

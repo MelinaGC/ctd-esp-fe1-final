@@ -8,16 +8,9 @@ import { fetchEpisodesThunk } from "../actions/episodeActions";
 import GrillaEpisodios from "../componentes/episodios/grilla-episodios.componente";
 
 /**
- * Esta es la pagina de detalle. Aqui se puede mostrar la vista sobre el personaje seleccionado junto con la lista de episodios en los que aparece
+ * Component that render the detail page of a character with its details and episodes it appears on.
  *
- * EL TRABAJO SOBRE ESTE ARCHIVO ES OPCIONAL Y NO ES REQUISITO DE APROBACION
- *
- *
- *
- * Uso:
- * ``` <PaginaDetalle /> ```
- *
- * @returns la pagina de detalle
+ * @returns character detail page.
  */
 
 const PaginaDetalle = () => {

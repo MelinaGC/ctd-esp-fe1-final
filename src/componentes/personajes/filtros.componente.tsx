@@ -1,6 +1,12 @@
 import { FC } from "react";
 import "./filtros.css";
 
+/**
+ * Component that renders an input so that the user can search a character by it's name.
+ *
+ * @returns {JSX.Element}
+ */
+
 const Filtros: FC<{
   filterValue: string;
   handleCharacterSearch: (filterName: string) => {};

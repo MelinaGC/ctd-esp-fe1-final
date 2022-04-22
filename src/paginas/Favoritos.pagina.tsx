@@ -4,18 +4,19 @@ import { useSelector } from "../store/store";
 import { removeAllFavorites } from "../actions/personajesActions";
 
 /**
- * Esta es la pagina de favoritos. Aquí se deberan ver todos los personajes marcados como favoritos
+ * Renders the favorite page and it is where all the favorite characters should be seen.
  *
- * Uso:
- * ``` <PaginaFavoritos /> ```
- *
- * @returns la pagina de favoritos
+ * @returns favorite characters page
  */
 
 const PaginaFavoritos = () => {
   const { favorites } = useSelector((state) => state.characters);
   const dispatch = useDispatch();
 
+  /**
+   * Function that when the button to delete all favorites in clicked dispatches the action to delete all
+   * characters from the favorite array.
+   */
   const removeFavoritesHandler = () => {
     dispatch(removeAllFavorites());
   };

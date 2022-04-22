@@ -5,12 +5,9 @@ import "./tarjeta-personaje.css";
 import { useNavigate } from "react-router-dom";
 
 /**
- * Tarjeta para cada personaje dentro de la grilla de personajes.
- *
- * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
- *
- *
- * @returns un JSX element
+ * Card for each characters in the grid of characters.
+ * @param {Character} character
+ * @returns {JSX.Element}
  */
 
 const TarjetaPersonaje: FC<{ character: Character }> = ({ character }) => {
